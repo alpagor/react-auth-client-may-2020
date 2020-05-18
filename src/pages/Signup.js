@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from './../lib/Auth';
+import { withAuth } from "./../lib/Auth"; //import the highOrder component
 
 class Signup extends Component {
   state = { username: "", password: "" };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
 
@@ -14,7 +14,7 @@ class Signup extends Component {
     // injected by the withAuth() HOC
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -26,12 +26,21 @@ class Signup extends Component {
         <h1>Sign Up</h1>
 
         <form onSubmit={this.handleFormSubmit}>
-
           <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange} />
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={this.handleChange}
+          />
 
           <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />
 
           <input type="submit" value="Signup" />
         </form>
@@ -43,4 +52,4 @@ class Signup extends Component {
   }
 }
 
-export default withAuth(Signup);
+export default withAuth(Signup); //wrap the component in withAuth so it is now a consumer
